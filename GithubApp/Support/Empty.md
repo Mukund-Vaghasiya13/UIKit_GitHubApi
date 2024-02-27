@@ -70,3 +70,53 @@ class NetworkManager{
     class FollwersCell: UICollectionViewCell {
     static let reuseId = "followerCell"
 }
+
+
+3) Set up collectionView
+        var CollectionView:UICollectionView!
+        
+        func ConfigureCollectionView(){
+        CollectionView = UICollectionView(frame: view.bounds,collectionViewLayout: UICollectionViewLayout()) // bounds cover full screen
+        view.addSubview(CollectionView)
+        CollectionView.backgroundColor = .systemPink
+        CollectionView.register(, forCellWithReuseIdentifier: )
+        /*  
+            CollectionView.register(, forCellWithReuseIdentifier: ) 
+            In Swift, register(_:forCellWithReuseIdentifier:) is a method used to register a UICollectionViewCell subclass for use in creating new cells for the collection view
+            means I am telling use this Cell Object and whose reuse id is this to create many cell you want
+    }
+
+# UICollection Viwe Flow Layout
+
+ Desingning Part of Collection how to have grid od 3 x 3  or 4 x 4 or it dermine how our grid Look
+
+    func ThreeColumnLayout()->UICollectionViewLayout{
+        
+        let screenWidth = view.bounds.width
+        let padding:CGFloat  = 12
+        let itemSpace:CGFloat = 10
+        let avalableSpace = screenWidth - (padding * 2) - (itemSpace * 2)
+        
+        /*
+        
+            We just Calculating Avalable space to show grid Column 
+            - screenWidth its full screen
+            - padding its space on left and right side of collection view 
+            - itemSpace its spcae between Cell
+            
+                    Our collection View Layout 
+            
+                |  ||CollectionViewcell|    |CollectionViewcell|    |CollectionViewcell||  |
+                |  ||CollectionViewcell|    |CollectionViewcell|    |CollectionViewcell||  |
+                |  ||CollectionViewcell|    |CollectionViewcell|    |CollectionViewcell||  |
+                 |                       |                        |                       | 
+            Padding                     Item Spacing             Item Spacing            Padding  
+             
+            - 2Padding and 2 Item Spacing  
+            
+        
+        */
+        
+        return UICollectionViewLayout()
+        
+    }
