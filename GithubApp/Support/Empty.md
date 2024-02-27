@@ -26,6 +26,11 @@ Tabbar hold Navigation controller and NavigationController hold View Controllers
         |-Navbar
             |-VieController
             
+  
+  
+#Constraint 
+
+traling Anchore must be nagative
             
 # var avatar_url:String?    Vs     var avatarUrl:String?   
 

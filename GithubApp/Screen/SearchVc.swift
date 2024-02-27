@@ -29,7 +29,7 @@ class SearchVc: UIViewController {
     
     private func ImageConfigure(){
         view.addSubview(LogoImage)
-        LogoImage.image = UIImage(named: "GhLogo")
+        LogoImage.image = UIImage(named: "gh-logo")
         LogoImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             LogoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 85),

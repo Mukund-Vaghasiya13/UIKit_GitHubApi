@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "226890009-9486e6f0-dc0f-413a-8195-5b704f05f29a.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "empty-state-logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "empty-state-logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

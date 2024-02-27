@@ -14,7 +14,7 @@ class FollowersController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .green
+        view.backgroundColor = .systemBackground
         
         NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: 1) { data, error in
             if let error = error {
