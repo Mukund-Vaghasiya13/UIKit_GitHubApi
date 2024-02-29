@@ -90,13 +90,20 @@ class NetworkManager{
 
  Desingning Part of Collection how to have grid od 3 x 3  or 4 x 4 or it dermine how our grid Look
 
-    func ThreeColumnLayout()->UICollectionViewLayout{
+    func ThreeColumnLayout()->UICollectionViewFlowLayout{
         
         let screenWidth = view.bounds.width
         let padding:CGFloat  = 12
         let itemSpace:CGFloat = 10
         let avalableSpace = screenWidth - (padding * 2) - (itemSpace * 2)
+        let itemWidth = avalableSpace / 3 // Each cell will get this width
         
+        let layout = UICollectionViewFlowLayout() // It help to determing how our Collection viwe look
+        layout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding) //Padding all around
+        
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40) // this is cell width and height is itemWidth means Square 
+        
+        return layout 
         /*
         
             We just Calculating Avalable space to show grid Column 
@@ -117,6 +124,53 @@ class NetworkManager{
         
         */
         
-        return UICollectionViewLayout()
+        return UICollectionViewFlowLayout()
         
     }
+
+
+# UICollectionViewDiffableDataSource() 
+
+it is a new way to handle data in Collection View and Table view 
+
+
+func collectionView_ collectionView: UICollectionView, numberOfItemsInSection section: Int) →> Int {
+return 1
+}
+func collectionViewl_ collectionView: UICollectionView, cellForItemAt indexPath:IndexPath) →› UICollectionViewCell {
+return UICollectionViewCe11()
+}
+
+This is old way to do stuff , UICollectionViewDiffableDataSource will really shines is when collection view and table view needs to be really dynamic
+
+data source has a hash value for your section and each of your item that we have in collection view it does it ,It take a snapshot of your current data and UI before you make any changes when you make changes it take another changes it take another snapshot of that and behind the scene it does the magical diffing 
+
+
+
+var datasource:UICollectionViewDiffableDataSource<> it take two parameter that are generics both have to conform to hasable it assine Id to section and item not using index path
+
+HasFunction Take value it covter it into fix value 
+"Mukund" - > 4884993
+
+
+
+
+Key thing is to remember we pass section and Item
+UICollectionViewDiffableDataSource<Section,Item>
+
+that section and item go through that hash function to give it a unique vaule and that`s how difficult data source tracks it it traks all those unique value in the section in the items and then it take snapshot if we change data it take snapshot of new data and behind the scene it give effect 
+
+
+        // Snapshot
+    func UpdateData(){
+        var snaphot = NSDiffableDataSourceSnapshot<Section,Follwer>() // that will create Snapshot
+        snaphot.appendSections([.Main])
+        snaphot.appendItems(followerData) // After snapshot set up we need to apply that does Animation Behind the scene
+        DispatchQueue.main.async{
+            self.datasource.apply(snaphot,animatingDifferences: true)
+        }
+    }
+    
+    
+
+

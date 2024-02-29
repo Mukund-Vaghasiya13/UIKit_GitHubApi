@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Follwer:Codable{
+struct Follwer:Hashable,Codable{
     var login:String?
     var avatarUrl:String?
 }
