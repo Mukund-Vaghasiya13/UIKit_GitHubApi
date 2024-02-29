@@ -74,7 +74,7 @@ class FollowersController: UIViewController {
     func ConfigureCollectionView(){
         CollectionView = UICollectionView(frame: view.bounds,collectionViewLayout: ThreeColumnLayout()) // bounds cover full screen
         view.addSubview(CollectionView)
-        CollectionView.backgroundColor = .systemPink
+        CollectionView.backgroundColor = .systemBackground
         CollectionView.register(FollwersCell.self, forCellWithReuseIdentifier:FollwersCell.reuseId)
     }
 

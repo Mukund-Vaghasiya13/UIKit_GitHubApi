@@ -234,7 +234,26 @@ mukund ref count will be 1 because mackbook have refrence so it will not dealloc
 in Mackbook class we use weak var owner:Developer it will not count mackbook refrence so this will allways 1 var mukund:Developer? = Developer(name:"Mukund") //ref count 1
 
 
-# Downlode Image 
+# Cache Image
 
+NSCache Type is used to cache The Image data back in days in swift
+
+   - Fun Facts
+   
+        NS Stand for next Step which was jobs company after apple which found by jobs he fierd from apple and at last apple end up acquiring that company to back setv jobs back 
+       Any thing we see with Ns is From Next 
+       
+NSCache take two generic Parameter <Key,Value> key is type of NSString and value is UIImage
+ 
+
+let cache = NSCache<NSString,UIImage>() //its Dictionary
+
+
+// to get image from cache 
+cache.object(forKey:"string Of type NSString")
+
+
+// set image to cache after we downlode image 
+cache.setObject(obj:UIImage,forkey:"string Of type NSString")
 
 

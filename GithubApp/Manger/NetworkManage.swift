@@ -5,7 +5,7 @@
 //  Created by Mukund vaghasiya  on 25/02/24.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager{
     static let shared = NetworkManager() // this is Singleton which means it can be accessed from any where
@@ -13,8 +13,9 @@ class NetworkManager{
     
     private init(){} // due to this i can not create object of this class to access Member use Singleton
     
-    let baseUrl = "https://api.github.com/users"
+    private let baseUrl = "https://api.github.com/users"
     
+    let cache = NSCache<NSString,UIImage>()
     
     func getFollowers(username:String,page:Int,complition:@escaping ([Follwer]?,ErrorMessage?)-> Void){
         let endpoint  = baseUrl + "/\(username)/followers"

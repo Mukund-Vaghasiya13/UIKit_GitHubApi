@@ -10,6 +10,8 @@ import UIKit
 class CoustomImageView: UIImageView {
 
     let placeHolder = UIImage(named: "avatar-placeholder")
+    let cache = NetworkManager.shared.cache
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         ConfigImage()
@@ -29,18 +31,25 @@ class CoustomImageView: UIImageView {
     }
 
     func DownlodeImage(url:String){
-        guard let url = URL(string: url) else{ return }
-        var task = URLSession.shared.dataTask(with: url) { data, res, error in
-            if error != nil {return}
-            guard let res = res as? HTTPURLResponse ,res.statusCode == 200 else{ return }
-            guard let data = data else {return}
-            
-            if let image = UIImage(data: data){
-                DispatchQueue.main.async {
-                    self.image = image
+        
+        let cacheKey = NSString(string: url)
+        if let image = cache.object(forKey: cacheKey){
+            self.image = image
+        }else{
+            guard let url = URL(string: url) else{ return }
+            let task = URLSession.shared.dataTask(with: url) { data, res, error in
+                if error != nil {return}
+                guard let res = res as? HTTPURLResponse ,res.statusCode == 200 else{ return }
+                guard let data = data else {return}
+                
+                if let image = UIImage(data: data){
+                    self.cache.setObject(image, forKey: cacheKey)
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
                 }
             }
+            task.resume()
         }
-        task.resume()
     }
 }
