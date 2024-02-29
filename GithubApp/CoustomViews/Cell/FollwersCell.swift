@@ -22,8 +22,9 @@ class FollwersCell: UICollectionViewCell {
     }
     
     
-    func SetTitle(follower:Follwer){
+    func Set(follower:Follwer){
         usernameLable.text = follower.login
+        avtagImage.DownlodeImage(url: follower.avatarUrl ?? "nil")
     }
     
     private func Configure(){

@@ -28,4 +28,19 @@ class CoustomImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func DownlodeImage(url:String){
+        guard let url = URL(string: url) else{ return }
+        var task = URLSession.shared.dataTask(with: url) { data, res, error in
+            if error != nil {return}
+            guard let res = res as? HTTPURLResponse ,res.statusCode == 200 else{ return }
+            guard let data = data else {return}
+            
+            if let image = UIImage(data: data){
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }
+        task.resume()
+    }
 }

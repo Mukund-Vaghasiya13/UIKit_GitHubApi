@@ -82,7 +82,7 @@ class FollowersController: UIViewController {
     func configureDataSource(){
         datasource = UICollectionViewDiffableDataSource<Section,Follwer>(collectionView: CollectionView, cellProvider: { collectionView, i, follower in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollwersCell.reuseId, for: i) as? FollwersCell
-            cell?.SetTitle(follower: follower)
+            cell?.Set(follower: follower)
             return cell
         })
     }

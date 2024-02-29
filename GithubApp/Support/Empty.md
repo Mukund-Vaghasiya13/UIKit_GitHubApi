@@ -172,5 +172,69 @@ that section and item go through that hash function to give it a unique vaule an
     }
     
     
+# Automatic Refrence Count Memory Management
+
+[weak self] 
+
+class Developer{
+    var name:String
+    var machine:Mackbook?
+
+    init(name:string){
+        self.name = nmae
+    }
+}
+
+
+class Mackbook{
+    var serialNo:Int
+    var owner:Developer?
+
+    init(serialNo:Int){
+        self.serialNo = serialNo
+    }
+}
+
+
+var mukund:Developer? = Developer(name:"Mukund") //ref count 1
+
+refrence of 1 in memory arc [Automatic Refrence Count] does it keeps count of all the refrence automatic 
+
+ - It cannot dealloc at an object from memory unless that refrence count is 0
+
+
+if i make mukund nil means refrence counter 0 it means it deallocated from memory 
+
+Now create refrence of Macbook
+
+var m1air:Mackbook? = Mackbook(serialNo:1234)
+
+
+Mackbook have property called owner and Developer have property called machine 
+
+
+m1air?.owner = mukund
+
+mukund?.machine = m1air
+
+
+mukund has a string reference to itself 
+
+m1air also has a strong refrence to mukund
+
+
+mukund refrence count = 2
+
+and same as m1air it have refrence count 2 
+
+So if mukund go out of scope or assine nil we thing mukund gone but mackbook have its refrence 
+
+mukund ref count will be 1 because mackbook have refrence so it will not deallocate from memory 
+
+in Mackbook class we use weak var owner:Developer it will not count mackbook refrence so this will allways 1 var mukund:Developer? = Developer(name:"Mukund") //ref count 1
+
+
+# Downlode Image 
+
 
 
