@@ -17,12 +17,14 @@ class FollowersController: UIViewController {
     var CollectionView:UICollectionView!
     var datasource:UICollectionViewDiffableDataSource<Section,Follwer>!
     var followerData:[Follwer] = []
+    var page = 1
+    var isHaveMorefollower = true
     
     override func viewDidLoad(){
         super.viewDidLoad()
       
         ConfigureView()
-        GetFollowers()
+        GetFollowers(username: followertitle ?? "", page: page)
         ConfigureCollectionView()
         configureDataSource()
     }
@@ -37,15 +39,14 @@ class FollowersController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
-    func GetFollowers(){
-        
-        NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: 1) { data, error in
+    func GetFollowers(username:String,page:Int){
+        NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: page) { data, error in
             if let error = error {
                 self.PresetnAlertOnMainThread(title: "Network", Message: error.rawValue)
             }else{
                 if let data = data{
-                    print(data)
-                    self.followerData = data
+                    if data.count < 100 { self.isHaveMorefollower = false }
+                    self.followerData.append(contentsOf: data)
                     self.UpdateData()
                 }else{
                     self.PresetnAlertOnMainThread(title: "Network", Message: "Decoding Fail")
@@ -76,6 +77,7 @@ class FollowersController: UIViewController {
         view.addSubview(CollectionView)
         CollectionView.backgroundColor = .systemBackground
         CollectionView.register(FollwersCell.self, forCellWithReuseIdentifier:FollwersCell.reuseId)
+        CollectionView.delegate = self
     }
 
     
@@ -94,6 +96,25 @@ class FollowersController: UIViewController {
         snaphot.appendItems(followerData) // After snapshot set up we need to apply that does Animation Behind the scene
         DispatchQueue.main.async{
             self.datasource.apply(snaphot,animatingDifferences: true)
+        }
+    }
+}
+
+
+extension FollowersController:UICollectionViewDelegate{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let offsetY = scrollView.contentOffset.y
+        let Contentheight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        print("offsetY:\(offsetY)")
+        print("Contentheight:\(Contentheight)")
+        print("height:\(height)")
+        print("offsetY: \(offsetY) > Contentheight - height: \(Contentheight - height)")
+        if offsetY > Contentheight - height{
+            if isHaveMorefollower{
+                page+=1
+                GetFollowers(username: followertitle ?? "", page: page)
+            }
         }
     }
 }

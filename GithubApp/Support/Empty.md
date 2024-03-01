@@ -256,4 +256,48 @@ cache.object(forKey:"string Of type NSString")
 // set image to cache after we downlode image 
 cache.setObject(obj:UIImage,forkey:"string Of type NSString")
 
+# Scroll View Delegate 
 
+In Order to get Scroll View Delegate stuff we conform to the CollectionViewDelegate give us Scroll View Delegate 
+
+
+First dont forgote to set
+
+collectionview.delegate = self 
+
+so we are saying that when we end up scrolling to this collection scroll view do these action we implement in self [viewContoller]  related to scrollveiw
+
+extension viewController:UICollectionViewDelegate{
+
+    /*
+
+        So now we have Scroll View Stuff so we can use its functionality as we want to use 
+    */
+
+    func scrollViewDidEndDragging(_ scrollView:UIScrollView,willDecelerate:Bool){
+        let offsetY = scrollView.contentOffset.y 
+        // is show how fare we scroll down
+
+        let contentHeight = scrollView.contentOffSize.height
+
+        // contentHeight is the height of the content in scroll view in our case we are have list of 100 follwer that height of the list is content hight
+
+        let height = scrollView.frame.size.hight 
+        // is height of the screen 
+
+        if offsetY > contentHeight - height{
+            // Do what ever you want 
+
+            // contentHeight - height means visibale content on screen height - contentHeight if we little bit try to sroll then offsetY will be greater and fire up this event that my under standing tell me 
+
+        }
+
+    }
+
+   /*
+
+        Delegate is its kind af sitting back like waiting for an action  select cell its waiting for us to tap a cell and then it fire up or acts in the scroll view is waiting for us to end dragging so its acts
+
+   */ 
+
+}

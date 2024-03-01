@@ -18,7 +18,7 @@ class NetworkManager{
     let cache = NSCache<NSString,UIImage>()
     
     func getFollowers(username:String,page:Int,complition:@escaping ([Follwer]?,ErrorMessage?)-> Void){
-        let endpoint  = baseUrl + "/\(username)/followers"
+        let endpoint  = baseUrl + "/\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else{
             complition(nil,.invalidUrl)
