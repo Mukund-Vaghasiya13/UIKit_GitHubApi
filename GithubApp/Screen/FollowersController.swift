@@ -22,7 +22,6 @@ class FollowersController: UIViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
-      
         ConfigureView()
         GetFollowers(username: followertitle ?? "", page: page)
         ConfigureCollectionView()
@@ -40,7 +39,9 @@ class FollowersController: UIViewController {
     }
     
     func GetFollowers(username:String,page:Int){
+        showLodingScreen()
         NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: page) { data, error in
+            self.dismissActivityView()
             if let error = error {
                 self.PresetnAlertOnMainThread(title: "Network", Message: error.rawValue)
             }else{
