@@ -48,6 +48,10 @@ class FollowersController: UIViewController {
                 if let data = data{
                     if data.count < 100 { self.isHaveMorefollower = false }
                     self.followerData.append(contentsOf: data)
+                    if self.followerData.isEmpty{
+                        self.ShowEmpetyState(message: "This User Doesn`t have any follower. Go follow then 😄", view: self.view)
+                        return
+                    }
                     self.UpdateData()
                 }else{
                     self.PresetnAlertOnMainThread(title: "Network", Message: "Decoding Fail")
@@ -81,7 +85,6 @@ class FollowersController: UIViewController {
         CollectionView.delegate = self
     }
 
-    
     func configureDataSource(){
         datasource = UICollectionViewDiffableDataSource<Section,Follwer>(collectionView: CollectionView, cellProvider: { collectionView, i, follower in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollwersCell.reuseId, for: i) as? FollwersCell

@@ -10,6 +10,7 @@ import UIKit
 fileprivate var cointainer:UIView!
 
 extension UIViewController{
+    
     func PresetnAlertOnMainThread(title:String,Message:String){
         let alert  = UIAlertController(title: title, message: Message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel,handler: nil)
@@ -48,5 +49,11 @@ extension UIViewController{
             cointainer.removeFromSuperview()
             cointainer = nil
         }
+    }
+    
+    func ShowEmpetyState(message:String,view:UIView){
+        let empetyStateView = EmpetyState(message: message)
+        empetyStateView.frame = view.bounds
+        view.addSubview(empetyStateView)
     }
 }

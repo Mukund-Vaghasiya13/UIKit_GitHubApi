@@ -25,6 +25,7 @@
 		60B36CFD2B8B61DA0040D7E3 /* ErrorModles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B36CFC2B8B61DA0040D7E3 /* ErrorModles.swift */; };
 		60B3A12C2B8CA9FD00532440 /* BodyLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3A12B2B8CA9FD00532440 /* BodyLable.swift */; };
 		60B3A12F2B8CAD3300532440 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3A12E2B8CAD3300532440 /* UIViewControllerExt.swift */; };
+		60FD73892B960E1200352ABD /* EmpetyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD73882B960E1200352ABD /* EmpetyState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		60B36CFC2B8B61DA0040D7E3 /* ErrorModles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModles.swift; sourceTree = "<group>"; };
 		60B3A12B2B8CA9FD00532440 /* BodyLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLable.swift; sourceTree = "<group>"; };
 		60B3A12E2B8CAD3300532440 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		60FD73882B960E1200352ABD /* EmpetyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpetyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				609C701A2B8CA080002121C8 /* TitleLable.swift */,
 				60B3A12B2B8CA9FD00532440 /* BodyLable.swift */,
 				602FF0252B8DDC6000FD1DAD /* CoustomImageView.swift */,
+				60FD73882B960E1200352ABD /* EmpetyState.swift */,
 			);
 			path = CoustomViews;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				6087E9BF2B8B286C0096BFFA /* NetworkManage.swift in Sources */,
 				60B3A12F2B8CAD3300532440 /* UIViewControllerExt.swift in Sources */,
 				609C70192B8C9DCB002121C8 /* FollwersCell.swift in Sources */,
+				60FD73892B960E1200352ABD /* EmpetyState.swift in Sources */,
 				60B36CFD2B8B61DA0040D7E3 /* ErrorModles.swift in Sources */,
 				60B3A12C2B8CA9FD00532440 /* BodyLable.swift in Sources */,
 				60966DBE2B7F7FDB00D975FC /* SearchVc.swift in Sources */,
