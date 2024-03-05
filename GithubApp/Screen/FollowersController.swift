@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FollowersController: UIViewController {
+class FollowersController: UIViewController{
     
     enum Section { // By default are hasable
         case Main // this main section in collection it may have many section
@@ -17,12 +17,14 @@ class FollowersController: UIViewController {
     var CollectionView:UICollectionView!
     var datasource:UICollectionViewDiffableDataSource<Section,Follwer>!
     var followerData:[Follwer] = []
+    var FilterResultData:[Follwer] = []
     var page = 1
     var isHaveMorefollower = true
     
     override func viewDidLoad(){
         super.viewDidLoad()
         ConfigureView()
+        ConfigureSearchBar()
         GetFollowers(username: followertitle ?? "", page: page)
         ConfigureCollectionView()
         configureDataSource()
@@ -38,6 +40,14 @@ class FollowersController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    func ConfigureSearchBar(){
+        let searchVc = UISearchController()
+        searchVc.searchResultsUpdater = self
+        searchVc.searchBar.placeholder = "Temporary"
+        searchVc.searchBar.delegate = self
+        navigationItem.searchController = searchVc
+    }
+    
     func GetFollowers(username:String,page:Int){
         showLodingScreen()
         NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: page) { data, error in
@@ -49,10 +59,12 @@ class FollowersController: UIViewController {
                     if data.count < 100 { self.isHaveMorefollower = false }
                     self.followerData.append(contentsOf: data)
                     if self.followerData.isEmpty{
-                        self.ShowEmpetyState(message: "This User Doesn`t have any follower. Go follow then 😄", view: self.view)
+                        DispatchQueue.main.async {
+                            self.ShowEmpetyState(message: "This User Doesn`t have any follower. Go follow then 😄", view: self.view)
+                        }
                         return
                     }
-                    self.UpdateData()
+                    self.UpdateData(show: self.followerData)
                 }else{
                     self.PresetnAlertOnMainThread(title: "Network", Message: "Decoding Fail")
                 }
@@ -94,10 +106,10 @@ class FollowersController: UIViewController {
     }
     
     // Snapshot
-    func UpdateData(){
+    func UpdateData(show:[Follwer]){
         var snaphot = NSDiffableDataSourceSnapshot<Section,Follwer>() // that will create Snapshot
         snaphot.appendSections([.Main])
-        snaphot.appendItems(followerData) // After snapshot set up we need to apply that does Animation Behind the scene
+        snaphot.appendItems(show) // After snapshot set up we need to apply that does Animation Behind the scene
         DispatchQueue.main.async{
             self.datasource.apply(snaphot,animatingDifferences: true)
         }
@@ -120,5 +132,18 @@ extension FollowersController:UICollectionViewDelegate{
                 GetFollowers(username: followertitle ?? "", page: page)
             }
         }
+    }
+}
+
+
+extension FollowersController:UISearchResultsUpdating,UISearchBarDelegate{
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
+        FilterResultData = followerData.filter{ $0.login!.lowercased().contains(filter.lowercased()) }
+        UpdateData(show: FilterResultData)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        UpdateData(show: followerData)
     }
 }

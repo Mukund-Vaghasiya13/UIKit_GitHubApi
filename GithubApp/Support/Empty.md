@@ -301,3 +301,30 @@ extension viewController:UICollectionViewDelegate{
    */ 
 
 }
+
+
+
+# Search Controller
+
+let searchVc = UISearchController()
+searchVc.searchResultUpdate = self // its a delegate 
+searchVc.searchBar.placeHolder = "anything"
+navigationItem.searchController = searchVc // set seachController in navigation bar 😄
+
+extension ViewController:UISearchResultUpdating{
+    func updateSearchResults(for searchController:UISearchController){
+        // it will notify us that something happen or result change in search bar
+    }
+}
+
+
+On SearchBar cancle button click do someting to do that we have to use searchBar delegate
+
+searchVc.searchBar.delegate = self
+
+
+that UISearchBarDelegate protocol have method called  
+
+func searchBarCancleButtonClick(searchBar:UISearchBar){
+    // Do what ever you want to do here 😝
+}

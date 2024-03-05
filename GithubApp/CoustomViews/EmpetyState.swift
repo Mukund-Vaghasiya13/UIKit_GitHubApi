@@ -33,16 +33,13 @@ class EmpetyState: UIView {
         
         messagelable.numberOfLines = 3
         messagelable.textColor = .secondaryLabel
-        messagelable.text = ""
-        
-        
         logo.image = UIImage(named: "empty-state-logo")
         logo.translatesAutoresizingMaskIntoConstraints = false
     
         NSLayoutConstraint.activate([
         
             messagelable.centerYAnchor.constraint(equalTo: self.centerYAnchor,constant: -150),
-            messagelable.leftAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            messagelable.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             messagelable.trailingAnchor.constraint(equalTo:self.trailingAnchor,constant: -40),
             messagelable.heightAnchor.constraint(equalToConstant: 200),
             
@@ -50,7 +47,7 @@ class EmpetyState: UIView {
             logo.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),//MEANS: increase Size of the image 1.3 time big
             logo.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
             logo.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 200),
-            logo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 140)
+            logo.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 50)
             
         
         ])
