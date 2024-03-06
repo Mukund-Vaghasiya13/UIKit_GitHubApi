@@ -25,6 +25,7 @@
 		60B36CFD2B8B61DA0040D7E3 /* ErrorModles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B36CFC2B8B61DA0040D7E3 /* ErrorModles.swift */; };
 		60B3A12C2B8CA9FD00532440 /* BodyLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3A12B2B8CA9FD00532440 /* BodyLable.swift */; };
 		60B3A12F2B8CAD3300532440 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B3A12E2B8CAD3300532440 /* UIViewControllerExt.swift */; };
+		60C849152B98899400B88F4C /* FollowerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C849142B98899400B88F4C /* FollowerCard.swift */; };
 		60FD73892B960E1200352ABD /* EmpetyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FD73882B960E1200352ABD /* EmpetyState.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		60B36CFC2B8B61DA0040D7E3 /* ErrorModles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModles.swift; sourceTree = "<group>"; };
 		60B3A12B2B8CA9FD00532440 /* BodyLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLable.swift; sourceTree = "<group>"; };
 		60B3A12E2B8CAD3300532440 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		60C849142B98899400B88F4C /* FollowerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCard.swift; sourceTree = "<group>"; };
 		60FD73882B960E1200352ABD /* EmpetyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpetyState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				60966DBF2B7F800900D975FC /* FavoritListVc.swift */,
 				60186DA12B80BBE10034D6CC /* FollowersController.swift */,
 				60966DBD2B7F7FDB00D975FC /* SearchVc.swift */,
+				60C849142B98899400B88F4C /* FollowerCard.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				60B36CFD2B8B61DA0040D7E3 /* ErrorModles.swift in Sources */,
 				60B3A12C2B8CA9FD00532440 /* BodyLable.swift in Sources */,
 				60966DBE2B7F7FDB00D975FC /* SearchVc.swift in Sources */,
+				60C849152B98899400B88F4C /* FollowerCard.swift in Sources */,
 				6006A6C12B7F5DFE0012D524 /* AppDelegate.swift in Sources */,
 				60186DA22B80BBE10034D6CC /* FollowersController.swift in Sources */,
 				601525D02B7FCF0000533610 /* CustomTextfield.swift in Sources */,

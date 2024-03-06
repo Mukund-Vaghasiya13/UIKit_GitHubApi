@@ -18,6 +18,7 @@ class FollowersController: UIViewController{
     var datasource:UICollectionViewDiffableDataSource<Section,Follwer>!
     var followerData:[Follwer] = []
     var FilterResultData:[Follwer] = []
+    var isSearching = false
     var page = 1
     var isHaveMorefollower = true
     
@@ -36,8 +37,8 @@ class FollowersController: UIViewController{
     }
     
     func ConfigureView(){
-        navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func ConfigureSearchBar(){
@@ -133,17 +134,27 @@ extension FollowersController:UICollectionViewDelegate{
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let follower =  isSearching ? FilterResultData[indexPath.item] : followerData[indexPath.item]
+        let card  = FollowerCard()
+        card.follower = follower
+        let navgation = UINavigationController(rootViewController: card)
+        present(navgation, animated: true)
+    }
 }
 
 
 extension FollowersController:UISearchResultsUpdating,UISearchBarDelegate{
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
+        isSearching = true
         FilterResultData = followerData.filter{ $0.login!.lowercased().contains(filter.lowercased()) }
         UpdateData(show: FilterResultData)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         UpdateData(show: followerData)
     }
 }
