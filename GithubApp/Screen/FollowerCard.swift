@@ -12,19 +12,20 @@ class FollowerCard: UIViewController {
     var follower:String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ConfigureView()
+        networkCall()
+    }
+
+    private func ConfigureView(){
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButttonClick))
         navigationItem.rightBarButtonItem = doneButton
         navigationController?.navigationBar.backgroundColor = .systemBackground
         view.backgroundColor = .red
-        
-        networkCall()
     }
-
+    
     @objc func doneButttonClick(){
         dismiss(animated: true)
     }
-    
     
     private func networkCall(){
         NetworkManager.shared.getUsers(username: follower) { res in
