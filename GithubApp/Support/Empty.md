@@ -328,3 +328,11 @@ that UISearchBarDelegate protocol have method called
 func searchBarCancleButtonClick(searchBar:UISearchBar){
     // Do what ever you want to do here 😝
 }
+
+
+
+# @escaping
+
+
+when we are doing async task on backgroung thread for that closure have to live longer than the func that why we called @escaping means in other word we can take closure outside its scope to live longer life
+
