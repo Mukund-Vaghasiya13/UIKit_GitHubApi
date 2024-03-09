@@ -17,11 +17,11 @@ class NetworkManager{
     
     let cache = NSCache<NSString,UIImage>()
     
-    func getFollowers(username:String,page:Int,complition:@escaping ([Follwer]?,ErrorMessage?)-> Void){
+    func getFollowers(username:String,page:Int,complition:@escaping (Result<[Follwer],ErrorMessage>)-> Void){
         let endpoint  = baseUrl + "/\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else{
-            complition(nil,.invalidUrl)
+            complition(.failure(.invalidUrl))
             return
         }
         
@@ -30,17 +30,17 @@ class NetworkManager{
         
         URLSession.shared.dataTask(with: request) { data, res, error in
             if let _ = error{
-                complition(nil,.networkConnection)
+                complition(.failure(.networkConnection))
                 return
             }
             
             guard let res = res as? HTTPURLResponse ,res.statusCode == 200 else{
-                complition(nil,.invaildResponse)
+                complition(.failure(.invaildResponse))
                 return
             }
             
             guard let data = data else{
-                complition(nil,.invalidData)
+                complition(.failure(.invalidData))
                 return
             }
             
@@ -48,9 +48,49 @@ class NetworkManager{
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let finalResponse = try decoder.decode([Follwer].self, from: data)
-                complition(finalResponse, nil)
+                complition(.success(finalResponse))
             }catch{
-                complition(nil,.invalidData)
+                complition(.failure(.networkConnection))
+            }
+            
+        }.resume()
+    }
+    
+    
+    func getUsers(username:String,complition:@escaping (Result<User,ErrorMessage>)-> Void){
+        let endpoint  = baseUrl + "/\(username)"
+        
+        guard let url = URL(string: endpoint) else{
+            complition(.failure(.invalidUrl))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, res, error in
+            if let _ = error{
+                complition(.failure(.networkConnection))
+                return
+            }
+            
+            guard let res = res as? HTTPURLResponse ,res.statusCode == 200 else{
+                complition(.failure(.invaildResponse))
+                return
+            }
+            
+            guard let data = data else{
+                complition(.failure(.invalidData))
+                return
+            }
+            
+            do{
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let finalResponse = try decoder.decode(User.self, from: data)
+                complition(.success(finalResponse))
+            }catch{
+                complition(.failure(.networkConnection))
             }
             
         }.resume()

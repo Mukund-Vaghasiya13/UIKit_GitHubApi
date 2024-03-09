@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum ErrorMessage:String{
+enum ErrorMessage:String,Error{
     case invalidUrl = "Invalid Url"
     case networkConnection = "Check Network Connection"
     case invaildResponse = "Invalid Response"

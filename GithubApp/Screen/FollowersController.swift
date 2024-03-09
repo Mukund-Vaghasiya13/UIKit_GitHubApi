@@ -51,27 +51,26 @@ class FollowersController: UIViewController{
     
     func GetFollowers(username:String,page:Int){
         showLodingScreen()
-        NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: page) { data, error in
+        NetworkManager.shared.getFollowers(username: followertitle ?? "nil", page: page) { res in
             self.dismissActivityView()
-            if let error = error {
-                self.PresetnAlertOnMainThread(title: "Network", Message: error.rawValue)
-            }else{
-                if let data = data{
-                    if data.count < 100 { self.isHaveMorefollower = false }
-                    self.followerData.append(contentsOf: data)
-                    if self.followerData.isEmpty{
-                        DispatchQueue.main.async {
-                            self.ShowEmpetyState(message: "This User Doesn`t have any follower. Go follow then 😄", view: self.view)
-                        }
-                        return
+            switch res{
+            case .success(let data) :
+                if data.count < 100 { self.isHaveMorefollower = false }
+                self.followerData.append(contentsOf: data)
+                if self.followerData.isEmpty{
+                    DispatchQueue.main.async {
+                        self.ShowEmpetyState(message: "This User Doesn`t have any follower. Go follow then 😄", view: self.view)
                     }
-                    self.UpdateData(show: self.followerData)
-                }else{
-                    self.PresetnAlertOnMainThread(title: "Network", Message: "Decoding Fail")
+                    return
                 }
+                self.UpdateData(show: self.followerData)
+                break
+                
+            case .failure(let e) :
+                self.PresetnAlertOnMainThread(title: "Network", Message: e.rawValue)
+                break
             }
         }
-        
     }
     
     func ThreeColumnLayout()->UICollectionViewFlowLayout{
@@ -138,7 +137,7 @@ extension FollowersController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let follower =  isSearching ? FilterResultData[indexPath.item] : followerData[indexPath.item]
         let card  = FollowerCard()
-        card.follower = follower
+        card.follower = follower.login
         let navgation = UINavigationController(rootViewController: card)
         present(navgation, animated: true)
     }
