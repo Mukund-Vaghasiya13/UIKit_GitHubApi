@@ -29,7 +29,7 @@ class TitleLable: UILabel {
     private func LableConfig(){
         textColor = .label
         adjustsFontSizeToFitWidth = true // Fit Font in one line if usename is long it will srink
-        font = UIFont.preferredFont(forTextStyle: .body)
+//        font = UIFont.preferredFont(forTextStyle: .body)
         minimumScaleFactor = 0.90 // means that will srink the font but not much
         lineBreakMode = .byTruncatingTail // if it big it will do .... At last
         translatesAutoresizingMaskIntoConstraints = false

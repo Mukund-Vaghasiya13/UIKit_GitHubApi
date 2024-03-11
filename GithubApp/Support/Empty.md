@@ -336,3 +336,15 @@ func searchBarCancleButtonClick(searchBar:UISearchBar){
 
 when we are doing async task on backgroung thread for that closure have to live longer than the func that why we called @escaping means in other word we can take closure outside its scope to live longer life
 
+
+# child View Controller
+
+To add Child View controller 
+
+
+func addchildVC(childview:UIViewController,to contanerView:UIView){
+     addChild(childview)  // addchild() has UIViewController type parameter add child viewController to Current working viewCotroller
+     contanerView.addSubview(childview.view) // basically on which view i want to show childview.view [ content ]
+    childview.view.frame = contanerView.bounds
+    childview.didMove(toParent: self) // didMove(toParent :self) means When you add a child view controller to a parent view controller using methods like addChild(_:) and addSubview(_:), you also need to call didMove(toParent:) to notify the child view controller that it has been added to the parent. is part of UIViewController Life cycle
+}

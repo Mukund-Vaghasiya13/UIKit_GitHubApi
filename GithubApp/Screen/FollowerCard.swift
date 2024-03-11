@@ -10,33 +10,55 @@ import UIKit
 class FollowerCard: UIViewController {
 
     var follower:String!
+    let headerView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigureView()
         networkCall()
+        layoutViewUI()
     }
 
     private func ConfigureView(){
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButttonClick))
         navigationItem.rightBarButtonItem = doneButton
         navigationController?.navigationBar.backgroundColor = .systemBackground
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
     }
     
     @objc func doneButttonClick(){
         dismiss(animated: true)
     }
     
+    private func layoutViewUI(){
+        view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), // safe area
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 180)
+        ])
+    }
+    
+    func addchildVC(childview:UIViewController,to contanerView:UIView){
+        addChild(childview) // add child viewController to Current working viewCotroller(FollowerCard)
+        contanerView.addSubview(childview.view) //contanerView is header view
+        childview.view.frame = contanerView.bounds
+        childview.didMove(toParent: self)
+    }
+    
     private func networkCall(){
         NetworkManager.shared.getUsers(username: follower) { res in
             switch res{
             case .success(let data):
-                    #warning("debunging success case")
-                    print(data)
+                    DispatchQueue.main.async {
+                        self.addchildVC(childview: HeaderCardViewController(user: data), to: self.headerView)
+                    }
                     break
             case .failure(let error):
-                    #warning("debunging failure case")
-                    print(error.rawValue)
+                self.PresetnAlertOnMainThread(title: "Network", Message: error.rawValue)
                     break
             }
         }
