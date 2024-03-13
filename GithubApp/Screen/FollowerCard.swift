@@ -11,6 +11,9 @@ class FollowerCard: UIViewController {
 
     var follower:String!
     let headerView = UIView()
+    let ItemOneView = UIView()
+    let ItemTwoView = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +35,35 @@ class FollowerCard: UIViewController {
     
     private func layoutViewUI(){
         view.addSubview(headerView)
+        view.addSubview(ItemOneView)
+        view.addSubview(ItemTwoView)
+        
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        ItemOneView.translatesAutoresizingMaskIntoConstraints = false
+        ItemTwoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        #warning("Debug")
+        ItemOneView.backgroundColor = .red
+        ItemTwoView.backgroundColor = .green
+        
+        let padding:CGFloat  = 20
+        
         NSLayoutConstraint.activate([
         
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), // safe area
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            ItemOneView.topAnchor.constraint(equalTo: headerView.bottomAnchor,constant: padding),
+            ItemOneView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: padding),
+            ItemOneView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            ItemOneView.heightAnchor.constraint(equalToConstant: 140),
+            
+            ItemTwoView.topAnchor.constraint(equalTo: ItemOneView.bottomAnchor,constant: padding),
+            ItemTwoView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: padding),
+            ItemTwoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            ItemTwoView.heightAnchor.constraint(equalToConstant: 140),
         ])
     }
     

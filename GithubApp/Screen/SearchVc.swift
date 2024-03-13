@@ -84,7 +84,10 @@ class SearchVc: UIViewController {
 
 extension SearchVc:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+        textField.returnKeyType = .go
+        searchButtonClicked()
         return true
     }
+    
+    
 }
