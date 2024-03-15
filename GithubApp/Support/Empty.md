@@ -348,3 +348,12 @@ func addchildVC(childview:UIViewController,to contanerView:UIView){
     childview.view.frame = contanerView.bounds
     childview.didMove(toParent: self) // didMove(toParent :self) means When you add a child view controller to a parent view controller using methods like addChild(_:) and addSubview(_:), you also need to call didMove(toParent:) to notify the child view controller that it has been added to the parent. is part of UIViewController Life cycle
 }
+
+
+# StackView
+
+Stackview.axis = .horizontal // how we want column or row
+Stackview.distribution = .equalSpacing // in css similar to diplay:flex;flex-direction:row ;justify-content: space-between
+Stackview.spacing = 20 // same as tailwind-Css gap in flex
+
+Stackview.addArrangedSubview() //Is Used to add child view 
