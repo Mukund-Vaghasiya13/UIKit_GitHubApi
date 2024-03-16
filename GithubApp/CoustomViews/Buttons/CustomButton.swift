@@ -32,4 +32,8 @@ class CustomButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+    func SetButtonConfig(bgColor:UIColor,title:String){
+        self.backgroundColor = bgColor
+        self.setTitle(title, for: .normal)
+    }
 }

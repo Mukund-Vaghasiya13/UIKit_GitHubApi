@@ -42,10 +42,6 @@ class FollowerCard: UIViewController {
         ItemOneView.translatesAutoresizingMaskIntoConstraints = false
         ItemTwoView.translatesAutoresizingMaskIntoConstraints = false
         
-        #warning("Debug")
-        ItemOneView.backgroundColor = .red
-        ItemTwoView.backgroundColor = .green
-        
         let padding:CGFloat  = 20
         
         NSLayoutConstraint.activate([
@@ -80,6 +76,8 @@ class FollowerCard: UIViewController {
             case .success(let data):
                     DispatchQueue.main.async {
                         self.addchildVC(childview: HeaderCardViewController(user: data), to: self.headerView)
+                        self.addchildVC(childview: RepoItemVc(user: data), to: self.ItemOneView)
+                        self.addchildVC(childview: FollowerItemVc(user: data), to: self.ItemTwoView)
                     }
                     break
             case .failure(let error):

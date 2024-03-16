@@ -20,6 +20,8 @@
 		604007C62BA32C2600400A63 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604007C52BA32C2600400A63 /* ItemViewController.swift */; };
 		606C674D2B9F00EF0035C525 /* SecondaryTitleLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606C674C2B9F00EF0035C525 /* SecondaryTitleLable.swift */; };
 		606C67552B9F02E10035C525 /* HeaderCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606C67542B9F02E10035C525 /* HeaderCardViewController.swift */; };
+		607F8D992BA5B431003D1B1E /* RepoItemVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607F8D982BA5B431003D1B1E /* RepoItemVc.swift */; };
+		607F8D9B2BA5B8D1003D1B1E /* FollowerItemVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607F8D9A2BA5B8D1003D1B1E /* FollowerItemVc.swift */; };
 		6087E9BF2B8B286C0096BFFA /* NetworkManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6087E9BE2B8B286C0096BFFA /* NetworkManage.swift */; };
 		60966DBE2B7F7FDB00D975FC /* SearchVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60966DBD2B7F7FDB00D975FC /* SearchVc.swift */; };
 		60966DC02B7F800900D975FC /* FavoritListVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60966DBF2B7F800900D975FC /* FavoritListVc.swift */; };
@@ -49,6 +51,8 @@
 		604007C52BA32C2600400A63 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		606C674C2B9F00EF0035C525 /* SecondaryTitleLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLable.swift; sourceTree = "<group>"; };
 		606C67542B9F02E10035C525 /* HeaderCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCardViewController.swift; sourceTree = "<group>"; };
+		607F8D982BA5B431003D1B1E /* RepoItemVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItemVc.swift; sourceTree = "<group>"; };
+		607F8D9A2BA5B8D1003D1B1E /* FollowerItemVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerItemVc.swift; sourceTree = "<group>"; };
 		6087E9BE2B8B286C0096BFFA /* NetworkManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManage.swift; sourceTree = "<group>"; };
 		60966DBC2B7F7F5A00D975FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		60966DBD2B7F7FDB00D975FC /* SearchVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVc.swift; sourceTree = "<group>"; };
@@ -119,12 +123,12 @@
 		600DCE5F2B8A1FD40014D8A9 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				607F8D9C2BA5B996003D1B1E /* ItemViewControllers */,
 				606C67532B9F02C10035C525 /* ChildVc */,
 				60966DBF2B7F800900D975FC /* FavoritListVc.swift */,
 				60186DA12B80BBE10034D6CC /* FollowersController.swift */,
 				60966DBD2B7F7FDB00D975FC /* SearchVc.swift */,
 				60C849142B98899400B88F4C /* FollowerCard.swift */,
-				604007C52BA32C2600400A63 /* ItemViewController.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -201,6 +205,16 @@
 				606C67542B9F02E10035C525 /* HeaderCardViewController.swift */,
 			);
 			path = ChildVc;
+			sourceTree = "<group>";
+		};
+		607F8D9C2BA5B996003D1B1E /* ItemViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				604007C52BA32C2600400A63 /* ItemViewController.swift */,
+				607F8D982BA5B431003D1B1E /* RepoItemVc.swift */,
+				607F8D9A2BA5B8D1003D1B1E /* FollowerItemVc.swift */,
+			);
+			path = ItemViewControllers;
 			sourceTree = "<group>";
 		};
 		6087E9BD2B8B285C0096BFFA /* Manger */ = {
@@ -298,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				602FF0262B8DDC6000FD1DAD /* CoustomImageView.swift in Sources */,
+				607F8D9B2BA5B8D1003D1B1E /* FollowerItemVc.swift in Sources */,
 				600DCE652B8A23980014D8A9 /* UserModle.swift in Sources */,
 				6087E9BF2B8B286C0096BFFA /* NetworkManage.swift in Sources */,
 				60B3A12F2B8CAD3300532440 /* UIViewControllerExt.swift in Sources */,
@@ -310,6 +325,7 @@
 				60C849152B98899400B88F4C /* FollowerCard.swift in Sources */,
 				604007C62BA32C2600400A63 /* ItemViewController.swift in Sources */,
 				6006A6C12B7F5DFE0012D524 /* AppDelegate.swift in Sources */,
+				607F8D992BA5B431003D1B1E /* RepoItemVc.swift in Sources */,
 				60186DA22B80BBE10034D6CC /* FollowersController.swift in Sources */,
 				601525D02B7FCF0000533610 /* CustomTextfield.swift in Sources */,
 				60966DC02B7F800900D975FC /* FavoritListVc.swift in Sources */,
