@@ -71,6 +71,18 @@ class NetworkManager{
     static let reuseId = "followerCell"
 }
 
+//IMP : 
+  
+Frame: Think of the frame as a picture frame. Just like a picture frame holds a picture, a view's frame holds its content. The frame determines where the view appears in its superview and how big it is. Imagine you have a piece of paper (the view) placed inside a frame (its superview). The position of the paper within the frame and its size relative to the frame are defined by the frame.
+
+Bounds: Now, consider the "bounds" as the view's own little world. It's like a mini-coordinate system that the view uses internally to draw its content. The bounds specify the size of the view's content area and its position relative to its own coordinate system. Think of it as a canvas where the view draws its content. The origin (0,0) of the bounds is at the top-left corner of the view, and the size of the bounds defines the extent of the content area within the view.
+
+In summary:
+
+Frame: Describes the view's position and size in its superview's coordinate system.
+Bounds: Describes the view's internal coordinate system and the size of its content area.
+
+
 
 3) Set up collectionView
         var CollectionView:UICollectionView!
