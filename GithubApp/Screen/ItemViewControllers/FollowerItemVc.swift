@@ -18,4 +18,8 @@ class FollowerItemVc:ItemViewController{
         itemTwo.SetItemInfoType(type: .following, count: user.following)
         actionButton.SetButtonConfig(bgColor: .systemGreen, title: "Get Followers")
     }
+    
+    override func buttonClickedActionToBePerform() {
+        delegate.FollowerButtonClicked()
+    }
 }

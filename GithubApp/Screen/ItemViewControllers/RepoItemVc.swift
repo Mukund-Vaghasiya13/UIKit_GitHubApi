@@ -12,6 +12,7 @@ class RepoItemVc: ItemViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigureItems()
+        
     }
     
     private func ConfigureItems(){
@@ -19,7 +20,10 @@ class RepoItemVc: ItemViewController{
         itemTwo.SetItemInfoType(type: .gists, count: user.publicGists)
         actionButton.SetButtonConfig(bgColor: .systemPurple, title: "GithHub Profile")
     }
-    
+
+    override func buttonClickedActionToBePerform() {
+        delegate.GithubButtonClicked()
+    }
 }
 
 

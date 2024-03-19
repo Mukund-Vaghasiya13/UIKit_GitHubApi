@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol UserInfoButtonAction{
+    func GithubButtonClicked()
+    func FollowerButtonClicked()
+}
+
 class FollowerCard: UIViewController {
 
     var follower:String!
@@ -74,11 +79,7 @@ class FollowerCard: UIViewController {
         NetworkManager.shared.getUsers(username: follower) { res in
             switch res{
             case .success(let data):
-                    DispatchQueue.main.async {
-                        self.addchildVC(childview: HeaderCardViewController(user: data), to: self.headerView)
-                        self.addchildVC(childview: RepoItemVc(user: data), to: self.ItemOneView)
-                        self.addchildVC(childview: FollowerItemVc(user: data), to: self.ItemTwoView)
-                    }
+                DispatchQueue.main.async { self.ConfigureChildView(for: data) }
                     break
             case .failure(let error):
                 self.PresetnAlertOnMainThread(title: "Network", Message: error.rawValue)
@@ -87,4 +88,31 @@ class FollowerCard: UIViewController {
         }
     }
     
+    private func ConfigureChildView(for child:User){
+        self.addchildVC(childview: HeaderCardViewController(user: child), to: self.headerView)
+        
+        let repo = RepoItemVc(user: child)
+        repo.delegate = self
+        
+        let foller = FollowerItemVc(user: child)
+        foller.delegate = self
+        
+        self.addchildVC(childview: repo, to: self.ItemOneView)
+        self.addchildVC(childview: foller, to: self.ItemTwoView)
+    }
+    
 }
+
+
+extension FollowerCard:UserInfoButtonAction{
+    func GithubButtonClicked() {
+        print("Github button working")
+    }
+    
+    func FollowerButtonClicked() {
+        print("Follower button working")
+    }
+}
+
+
+

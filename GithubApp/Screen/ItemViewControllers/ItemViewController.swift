@@ -14,6 +14,8 @@ class ItemViewController: UIViewController {
     let itemTwo = ItemView()
     let actionButton = CustomButton()
     
+    var delegate:UserInfoButtonAction!
+    
     var user:User!
     
     init(user: User!) {
@@ -31,7 +33,14 @@ class ItemViewController: UIViewController {
         ConfigureView()
         LayoutAllViews()
         ConfigureStackView()
+        ConfigureActionButtonAction()
     }
+    
+    private func ConfigureActionButtonAction(){
+        actionButton.addTarget(self, action: #selector(buttonClickedActionToBePerform), for: .touchUpInside)
+    }
+    
+    @objc func buttonClickedActionToBePerform(){}
     
     private func ConfigureView(){
         view.layer.cornerRadius = 18
