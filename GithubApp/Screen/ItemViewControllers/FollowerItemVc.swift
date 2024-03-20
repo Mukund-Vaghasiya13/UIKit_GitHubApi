@@ -20,6 +20,11 @@ class FollowerItemVc:ItemViewController{
     }
     
     override func buttonClickedActionToBePerform() {
-        delegate.FollowerButtonClicked()
+        guard let user = user else {
+            PresetnAlertOnMainThread(title: "User not found", Message: "Something went wrong user not found🥴")
+            return
+        }
+        delegate.FollowerButtonClicked(for:user)
+        dismiss(animated: true)
     }
 }

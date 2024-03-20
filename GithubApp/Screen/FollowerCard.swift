@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol UserInfoButtonAction{
-    func GithubButtonClicked()
-    func FollowerButtonClicked()
+    func GithubButtonClicked(for user:User)
+    func FollowerButtonClicked(for user:User)
 }
 
 class FollowerCard: UIViewController {
@@ -18,6 +19,7 @@ class FollowerCard: UIViewController {
     let headerView = UIView()
     let ItemOneView = UIView()
     let ItemTwoView = UIView()
+    var delegate:WhatToShowOnFollowerList!
     
     
     override func viewDidLoad() {
@@ -105,12 +107,19 @@ class FollowerCard: UIViewController {
 
 
 extension FollowerCard:UserInfoButtonAction{
-    func GithubButtonClicked() {
-        print("Github button working")
+    func GithubButtonClicked(for user:User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            PresetnAlertOnMainThread(title: "Invalid Url", Message: "404 Not found !")
+            return
+        }
+        
+        let safari = SFSafariViewController(url: url)
+        present(safari, animated: true)
+        
     }
     
-    func FollowerButtonClicked() {
-        print("Follower button working")
+    func FollowerButtonClicked(for user:User) {
+        delegate.didiREquestForFollower(for: user.login)
     }
 }
 

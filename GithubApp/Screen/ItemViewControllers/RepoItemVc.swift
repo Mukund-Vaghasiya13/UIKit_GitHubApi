@@ -22,7 +22,7 @@ class RepoItemVc: ItemViewController{
     }
 
     override func buttonClickedActionToBePerform() {
-        delegate.GithubButtonClicked()
+        delegate.GithubButtonClicked(for: user)
     }
 }
 

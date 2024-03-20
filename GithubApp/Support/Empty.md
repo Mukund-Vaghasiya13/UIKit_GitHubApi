@@ -369,3 +369,13 @@ Stackview.distribution = .equalSpacing // in css similar to diplay:flex;flex-dir
 Stackview.spacing = 20 // same as tailwind-Css gap in flex
 
 Stackview.addArrangedSubview() //Is Used to add child view 
+
+
+#Safari services 
+
+import SafariServices
+
+        let safari = SFSafariViewController(url: url) // its a UIViewController
+        present(safari, animated: true)
+        
+

@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol WhatToShowOnFollowerList{
+    func didiREquestForFollower(for username:String)
+}
+
+
 class FollowersController: UIViewController{
     
     enum Section { // By default are hasable
@@ -138,6 +143,7 @@ extension FollowersController:UICollectionViewDelegate{
         let follower =  isSearching ? FilterResultData[indexPath.item] : followerData[indexPath.item]
         let card  = FollowerCard()
         card.follower = follower.login
+        card.delegate = self
         let navgation = UINavigationController(rootViewController: card)
         present(navgation, animated: true)
     }
@@ -155,5 +161,18 @@ extension FollowersController:UISearchResultsUpdating,UISearchBarDelegate{
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         UpdateData(show: followerData)
+    }
+}
+
+
+extension FollowersController : WhatToShowOnFollowerList{
+    func didiREquestForFollower(for username: String) {
+        followertitle = username
+        title = username
+        page = 1
+        followerData.removeAll()
+        FilterResultData.removeAll()
+        CollectionView.setContentOffset(.zero, animated: true)
+        GetFollowers(username: username, page: page)
     }
 }
