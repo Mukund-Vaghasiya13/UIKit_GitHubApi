@@ -16,6 +16,7 @@
 		601525CE2B7FC94D00533610 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601525CD2B7FC94D00533610 /* CustomButton.swift */; };
 		601525D02B7FCF0000533610 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601525CF2B7FCF0000533610 /* CustomTextfield.swift */; };
 		60186DA22B80BBE10034D6CC /* FollowersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60186DA12B80BBE10034D6CC /* FollowersController.swift */; };
+		60226C892BAEFFC300575DE4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 60226C882BAEFFC300575DE4 /* .gitignore */; };
 		602FF0262B8DDC6000FD1DAD /* CoustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FF0252B8DDC6000FD1DAD /* CoustomImageView.swift */; };
 		604007C62BA32C2600400A63 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604007C52BA32C2600400A63 /* ItemViewController.swift */; };
 		606C674D2B9F00EF0035C525 /* SecondaryTitleLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606C674C2B9F00EF0035C525 /* SecondaryTitleLable.swift */; };
@@ -47,6 +48,7 @@
 		601525CD2B7FC94D00533610 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		601525CF2B7FCF0000533610 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		60186DA12B80BBE10034D6CC /* FollowersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersController.swift; sourceTree = "<group>"; };
+		60226C882BAEFFC300575DE4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		602FF0252B8DDC6000FD1DAD /* CoustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomImageView.swift; sourceTree = "<group>"; };
 		604007C52BA32C2600400A63 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		606C674C2B9F00EF0035C525 /* SecondaryTitleLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTitleLable.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				60966DBC2B7F7F5A00D975FC /* Empty.md */,
 				6006A6CB2B7F5DFF0012D524 /* LaunchScreen.storyboard */,
 				6006A6C92B7F5DFF0012D524 /* Assets.xcassets */,
+				60226C882BAEFFC300575DE4 /* .gitignore */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6006A6CD2B7F5DFF0012D524 /* LaunchScreen.storyboard in Resources */,
+				60226C892BAEFFC300575DE4 /* .gitignore in Resources */,
 				6006A6CA2B7F5DFF0012D524 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
