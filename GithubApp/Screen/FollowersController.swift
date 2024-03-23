@@ -11,7 +11,6 @@ protocol WhatToShowOnFollowerList{
     func didiREquestForFollower(for username:String)
 }
 
-
 class FollowersController: UIViewController{
     
     enum Section { // By default are hasable
