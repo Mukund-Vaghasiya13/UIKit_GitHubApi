@@ -44,7 +44,13 @@ class FollowersController: UIViewController{
     func ConfigureView(){
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(OnAddButtonClicked))
     }
+    
+    @objc private func OnAddButtonClicked(){
+        print("Add Button tap")
+    }
+    
     
     func ConfigureSearchBar(){
         let searchVc = UISearchController()
