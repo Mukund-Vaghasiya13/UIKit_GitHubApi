@@ -379,3 +379,22 @@ import SafariServices
         present(safari, animated: true)
         
 
+# Swiftui In UIkit 
+
+
+Create Swiftui View for Follower cell and to use this sell
+
+    in follower celll 
+    func Set(follower:Follwer){
+    
+        if #available(iOS 16.0, *){
+        
+        // this is for ...
+            contentConfiguration = UIHostingConfiguration{
+                // Pass swiftui View
+            } // Swiftui Only work for ios 16 
+        }else{
+            usernameLable.text = follower.login
+            avtagImage.DownlodeImage(url: follower.avatarUrl ?? "nil")
+        }
+    }

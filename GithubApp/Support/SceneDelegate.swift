@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: placing window on UIwindoWindowScene
         window?.windowScene = windowScene
         //MARK: giving rootViewController to window that that content show on screen
-        window?.rootViewController = CreateTabBarController()
+        window?.rootViewController = CreateSearchNavigationController()
         //MARK:  Make the window visible and active on the screen
         window?.makeKeyAndVisible()
     }
@@ -42,22 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     }
     
-    private func CreateFravoitNavigationController()-> UINavigationController{
-        let FV = FavoritListVc()
-        FV.title = "Farorit Vc"
-        FV.tabBarItem = UITabBarItem(title: "FV", image:.remove, tag: 1)
-        return UINavigationController(rootViewController: FV)
-    }
-
-    
-    private func CreateTabBarController()->UITabBarController{
-        let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemRed
-        UITabBar.appearance().backgroundColor = .systemBackground
-        tabbar.viewControllers = [CreateSearchNavigationController(),CreateFravoitNavigationController()]
-        
-        return tabbar
-    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
